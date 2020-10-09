@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <style>
+	
+      #map {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script>
+this.map = L.map('map', {
+  center: [21.0000, 78.0000], // india coordinates 
+  zoom: 5,
+  zoomControl: true,
+  trackResize: true,
+});
+      L.tileLayer('https://api.maptiler.com/maps/darkmatter/{z}/{x}/{y}.png?key=Xz3gCVN9QdzueQg6iSWc',{
+        tileSize: 512,
+        zoomOffset: -1,
+        minZoom: 1,
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+      }).addTo(map);
+var redIcon = new L.Icon({
+	iconUrl: 'img/marker-icon-2x-red.png',
+	shadowUrl: 'img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var greenIcon = new L.Icon({
+	iconUrl: 'img/marker-icon-2x-green.png',
+	shadowUrl: 'img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+
+var orangeIcon = new L.Icon({
+	iconUrl: 'img/marker-icon-2x-orange.png',
+	shadowUrl: 'img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+var blueIcon = new L.Icon({
+	iconUrl: 'img/marker-icon-2x-blue.png',
+	shadowUrl: 'img/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+});
+	var url="https://covid-india-cases.herokuapp.com/states/";
+$.get(url,function(data){
+for (i = 0; i < 36; i++){
+var latlon ="";
+var state_id=data[ i ].state ;
+var tcase= data[ i ].noOfCases;
+var acase= data[ i ].noOfCases-(data[ i ].deaths+data[ i ].cured);
+var rec= data[ i ].cured;
+var death= data[ i ].deaths;
+var deathp=((Number(data[ i ].deaths)/Number(data[ i ].noOfCases))*100).toLocaleString("en", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + "%";
+	myfunction(state_id,tcase,acase,rec,death,deathp);
+	}
+	});
+var urld="https://api.covid19india.org/v2/state_district_wise.json";
+var urlz="https://api.covidindiatracker.com/state_data.json";
+var s = "Tamil Nadu";
+var counts=0;
+var countd=0;
+$.get(urld,function(data){
+for (i = 0; i < 37; i++){
+if(data[ i ].state==s){
+count = data[i].districtData.length
+console.log(count);
+for(j=0;j<count;j++){
+var d=data[i].districtData[j].district;
+var confirmed =data[i].districtData[j].confirmed;
+var activecases =data[i].districtData[j].active;
+var deaths =data[i].districtData[j].deceased;
+var recovered =data[i].districtData[j].recovered;
+var newc=data[i].districtData[j].delta.confirmed;
+var newr =data[i].districtData[ j].delta.recovered;
+var newd =data[i].districtData[ j ].delta.deceased;
+myfunctiond(d,confirmed,activecases,deaths,recovered,newc,newr,newd);
+}
+}
+}
+})
+    </script>
+<script>
+function myfunction(state,tcase,acase,rec,death,deathp){
+var lat=0;
+var lon=0;
+fetch('./latlong.json')        
+  .then(results => results.json())   
+      .then(function(datas){
+	      lat=datas[state].latitude;
+		  lon=datas[state].longitude;
+			var marker = L.marker([lat,lon],{icon: blueIcon}).addTo(map);
+		marker.bindPopup("<b>"+state+"</b><br>Total Cases -"+tcase+"<br>ActiveCases -"+acase+"<br>Recovered -"+rec+"<br>Death -"+death+"<br>Death % -"+deathp);
+		marker.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        marker.on('mouseout', function (e) {
+            this.closePopup();
+        });
+	  });
+}
+function myfunctiond(d,confirmed,activecases,deaths,recovered,newc,newr,newd){
+var lat=0;
+var lon=0;
+fetch('./latlong.json')        
+  .then(results => results.json())   
+      .then(function(datas){
+	      lat=datas[d].latitude;
+		  lon=datas[d].longitude;
+		   if(activecases ==0){
+			var marker = L.marker([lat,lon],{icon: greenIcon}).addTo(map);
+             }
+            else if(activecases < 20)	{
+			var marker = L.marker([lat,lon],{icon: orangeIcon}).addTo(map);
+             }
+			else{
+			var marker = L.marker([lat,lon],{icon: redIcon}).addTo(map);
+             }
+			 if(d == "Madurai")
+			 {
+			marker.bindPopup("<b>"+d+"</b><br>Total Cases -"+confirmed+"<br>ActiveCases -"+activecases+"<br>Recovered -"+recovered+"<br>Death -"+deaths+"<br>New Cases -"+newc+"<br>New Recoverd -"+newr+"<br>New Deaths -"+newd, {closeOnClick: false, autoClose: false}).openPopup();
+             }
+			 else{
+			 marker.bindPopup("<b>"+d+"</b><br>Total Cases -"+confirmed+"<br>ActiveCases -"+activecases+"<br>Recovered -"+recovered+"<br>Death -"+deaths+"<br>New Cases -"+newc+"<br>New Recoverd -"+newr+"<br>New Deaths -"+newd);
+			 }
+			 marker.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        marker.on('mouseout', function (e) {
+            this.closePopup();
+        });
+			 
+			 
+	 });
+}
+</script>
+  </body>
+</html>

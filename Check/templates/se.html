@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>Covid-19 - MADURAI</title>
+<link rel="icon" href="{{ url_for('static',filename='image/image.ico')}}">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/color1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome-all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/sss.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/map.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 100%;
+  height: 20%;
+  padding: 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 300px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 80px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  height: 94%;
+ 
+
+}
+</style>
+<body>
+
+    <div class="boxed_wrapper">
+        <header class="main-header">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                      <figure class="logo"><a href="index.html"><img src="{{ url_for('static', filename='image/logo.png') }}" alt=""></a></figure>
+                </div>
+				        
+                <div class="menu-area pull-right">
+                    
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation scroll-nav clearfix">
+                                <li ><a href="index.html">Home</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="btn-box">
+                              <h5><b>Language translation</b></h5>
+                            <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                                }
+                                </script>
+						<script type="text/javascript" src="{{ url_for('static', filename='js/lang.js') }}" >     </script>
+                           
+                    </div>
+                </div>
+				
+            </div>
+		    </div>
+
+            <!--sticky Header-->
+        </header>
+		 <section class="about-section centred" id="about">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+            <div class="anim-icon">
+                <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+				<div class="card " style="width: 80rem; border-radius: 20px;>
+						<div class="card-body" >
+							<div class="card-title"><h2><b>Consult Online For COVID-19</b></h2></div>
+								<p class="card-text">
+									<h5><b>Indian Government Helpline (mohwf.gov.in)</b></h5>
+									<table class="table table-striped">
+								
+							
+								
+								
+								
+								
+								<tbody>
+									<tr>
+										<td><span class="glyphicon glyphicon-earphone"></span></td>
+										<td>Helpline</td>
+										<td>+91-11-23978046</td>
+									</tr>
+									<tr>
+										<td><span class="glyphicon glyphicon-earphone"></span></td>
+										<td>Toll free</td>
+										<td>1075</td>
+									</tr>
+     
+    </tbody>
+  </table>
+															
+							</p>
+									<p class="card-text">
+							<h5><b>Recommended Hospital for Corono By Government</b></h5>
+								<table class="table table-striped">
+								<thead>
+								<tr>
+										
+										<th><b>Hospital Name</b></th>
+										<th><b>Phone</b></th>
+										<th><b>Address</b></th>
+									</tr>
+								</thead>
+							
+								
+								
+								
+								
+								<tbody>
+									<tr>
+										
+										<td>Rajaji Hospital</td>
+										<td>0452 253 3230</td>
+										<td>Panagal Road, Madurai 625020.</td>
+									</tr>
+									<tr>
+										
+										<td>Velammal Medical College Hospital</td>
+										<td>0452 711 3333</td>
+										<td>Near Chinthamani, Madurai 625009.</td>
+									</tr>
+									
+									<tr>
+										
+										<td>Meenakshi Mission Hospital</td>
+										<td>0452 258 1212</td>
+										<td>Lake Area, melur Road,Madurai-625 107.</td>
+									</tr>
+									
+									<tr>
+									
+										<td>Apollo Hospitals</td>
+										<td>0452 258 0892</td>
+										<td>80 Feet Rd, Deputy Collector Colony, KK Nagar,Madurai 625020</td>
+									</tr>
+									
+									
+     
+    </tbody>
+  </table>
+  				</p>
+				<h5><b>Government Lab</b></h5>
+								<table class="table table-striped">
+								
+							
+								
+								
+								
+								
+								<tbody>
+									<tr>
+										<td><span class="glyphicon glyphicon-home"></span></td>
+										<td>Madurai Medical college</td>
+										<td>+91-452 2532535</td>
+										<td>Medical College Rd, Alwarpuram, Madurai, Tamil Nadu 625020</td>
+									</tr>
+									
+     
+    </tbody>
+  </table>
+							
+                  
+            </div>
+          </div>
+       
+          </div>
+		</div>
+                
+                
+           
+        </section>
+	
+		       
+          
+        <!-- main-footer end -->
+        <footer class="main-footer">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-3.png);"></div>
+            <div class="anim-icon">
+               <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				
+            </div>
+            <div class="footer-top">
+                <div class="auto-container">
+                    <div class="widget-section">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="logo-widget footer-widget">
+                                    <figure class="footer-logo"><a href="index.html"><img src="{{ url_for('static', filename='image/footer-logo.png') }}" alt=""></a></figure>
+                                    <div class="text">
+                                        <p>The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads.</p>
+                                        <p>Protect yourself and others from infec- tion by washing your hands or using an</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget service footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">About Us</a></li>
+                                            <li><a href="index.html">Symptoms</a></li>
+                                            <li><a href="index.html">Prevention</a></li>
+                                            <li><a href="index.html">Our Doctors</a></li>
+                                            <li><a href="index.html">Our Blog</a></li>
+                                            <li><a href="index.html">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget region footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Regions</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">Madurai</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="contact-widget footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Contacts</h3>
+                                    </div>
+                                    <ul class="info-list clearfix">
+                                      
+                                        <li><span class="glyphicon glyphicon-earphone"></span><a href="tel:23055873407"> Toll free No. 1077, 0452-2546160,<br> 9597176061     </a></li>
+                                        <li> <span class="glyphicon glyphicon-envelope"></span><a> madurai@gmail.com</a></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="bottom-inner clearfix">
+                        <div class="copyright pull-left">
+                            <p><a href="index.html">Covid-19</a> &copy; 2020 All Right Reserved</p>
+                        </div>
+                        <ul class="footer-nav pull-right">
+                            <li><a href="index.html">Terms of Service</a></li>
+                            <li><a href="index.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+      
+
+<script src="{{ url_for('static', filename='js/jquery1.js') }}"></script>
+
+</body><!-- End of .page_wrapper -->
+</html>

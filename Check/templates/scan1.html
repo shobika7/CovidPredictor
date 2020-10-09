@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>Covid-19 - MADURAI</title>
+<link rel="icon" href="{{ url_for('static',filename='image/image.ico')}}">
+
+<link href="sss.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/color1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome-all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/sss.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/map.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <style>
+{
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  
+ 
+  position: relative;
+  font-family: Arial;
+  
+}
+.text-block {
+  position: absolute;
+  top:2px;
+  middle:20px;
+  margin-left:50px;
+  margin-right:50px;
+  background-color: black;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top:20px;
+  height:100%;
+  width:90%;
+  opacity:0.7;
+}
+
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-50, .col-50, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+</style>
+
+</style>
+
+<body>
+    <div class="boxed_wrapper">
+        <header class="main-header">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="index.html"><img src="{{ url_for('static', filename='image/logo.png') }}" alt="" style="height:200%;"></a></figure>
+                </div>
+				        
+                <div class="menu-area pull-right">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler">
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                    </div>
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation scroll-nav clearfix">
+                                <li></li>
+                                <li ><a href="index.html">Home</a></li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="btn-box">
+                              <h5><b>Language transulation</b></h5>
+                            <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                                }
+                                </script>
+
+                                <script type="text/javascript" src="{{ url_for('static', filename='js/lang.js') }}" >     </script>
+                    </div>
+                </div>
+				
+            </div>
+		    </div>
+
+            <!--sticky Header-->
+        </header>
+		<br>
+		<br>
+			<strong style="padding-left:460px;font-size: 30px;color: red;text-align:center;" id="pred">
+   {{ prediction_text }} 
+  </strong>
+ <br>
+ <br>
+		<br>
+		<br>
+		 	<div class="container">
+		
+			<img src="{{ url_for('static', filename='image/corona.jpg') }}" alt="Nature" style="height:1200px;">
+				<div class="text-block">
+			
+					<h2 style="padding-left:120px;"><b>  PREDICTION ON CORONA RISK LEVEL PERCENTAGE  </b></h2><br>
+				
+						<form action="{{ url_for('predict')}}"method="post">
+    <div class="row">
+      <div class="col-50">
+        <label for="fname">How old are you ?</label>
+      </div>
+      <div class="col-50">
+        <input type="text"  name="How old are you ?" placeholder="Enter your age ...">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="country">Please select your gender:</label>
+      </div>
+      <div class="col-50">
+		<input type="radio" name="Select your gender" value="1" /> Male<br>
+        <input type="radio" name="Select your gender" value="0" /> Female<br>
+        <input type="radio" name="Select your gender" value="2" /> Others<br>
+      </div>
+    </div>
+	 <div class="row">
+      <div class="col-50">
+        <label for="What is your current body temperature in degrees Fahrenheit ?">What is your current body temperature in degrees Fahrenheit ?</label>
+      </div>
+      <div class="col-50">
+			 <input type="radio" name="What is your current body temperature in degrees Fahrenheit ?" value="0" /> Normal (96 Degree to 98.6 Degree)<br>
+        <input type="radio" name="What is your current body temperature in degrees Fahrenheit ?" value="1" /> Fever (98.6 Degreee to 102 Degree)<br>
+        <input type="radio" name="What is your current body temperature in degrees Fahrenheit ?" value="2" /> High Fever (> 102 Degree)<br>
+      </div>
+    </div>
+	 <div class="row">
+      <div class="col-50">
+        <label for="Are you experiencing any of the symptoms below (mark all those applicable) ?">Are you experiencing any of the symptoms below (mark all those applicable) ?</label>
+      </div>
+      <div class="col-50">
+         <input type="checkbox" name="Are you experiencing any of the symptoms below (mark all those applicable) ?" value="3" /> Difficulty in Breathing<br>
+        <input type="checkbox" name="Are you experiencing any of the symptoms below (mark all those applicable) ?" value="2" /> Dry Cough<br>
+        <input type="checkbox" name="Are you experiencing any of the symptoms below (mark all those applicable) ?" value="1" /> Running Nose<br>
+        <input type="checkbox" name="Are you experiencing any of the symptoms below (mark all those applicable) ?" value="0" /> None of These<br>
+      </div>
+    </div>
+	 <div class="row">
+      <div class="col-50">
+        <label for="Please verify if you are experiencing any of the symptoms below.">Please verify if you are experiencing any of the symptoms below.</label>
+      </div>
+      <div class="col-50">
+        <input type="checkbox" name="Please verify if you are experiencing any of the symptoms below." value="2" /> Severe Weakness<br>
+        <input type="checkbox" name="Please verify if you are experiencing any of the symptoms below." value="1" /> Drowsiness<br>
+        <input type="checkbox" name="Please verify if you are experiencing any of the symptoms below." value="3" /> Difficulty in Breathing<br>
+        <input type="checkbox" name="Please verify if you are experiencing any of the symptoms below." value="4" /> Persisitent Pain and Pressure in Chest<br>
+        <input type="checkbox" name="Please verify if you are experiencing any of the symptoms below." value="0" /> None of These<br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="Please tell us about your travel and exposure details.">Please tell us about your travel and exposure details.</label>
+      </div>
+      <div class="col-50">
+        <input type="checkbox" name="Please tell us about your travel and exposure details." value="0" /> No Travel History<br>
+        <input type="checkbox" name="Please tell us about your travel and exposure details." value=
+        "1" /> No Contact from anyone from abroad<br>
+        <input type="checkbox" name="Please tell us about your travel and exposure details." value="2" /> Yes ! Travelled in an affected for the past 2 weeks<br>
+        <input type="checkbox" name="Please tell us about your travel and exposure details." value="3" /> Meeting with someone in an affected area for the past 2 weeks<br> 
+        <input type="checkbox" name="Please tell us about your travel and exposure details." value="4" /> Close contact or working with any confirmed Covid for the past 2 weeks<br>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-50">
+        <label for="Do you have a history of any of these conditions (mark all those applicable)?">Do you have a history of any of these conditions (mark all those applicable)?</label>
+      </div>
+      <div class="col-50">
+         <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="3" /> Diabetes<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="6" /> High Blood Pressure<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="5" /> Heart Problem<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="1" /> Kidney Disease<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="7" /> Lung Disease ( Asthma , TB , etc )<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="2" /> Stroke<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="4" /> Reduced Immunity<br>
+        <input type="checkbox" name="Do you have a history of any of these conditions (mark all those applicable)?" value="0" /> None of These<br>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-50">
+        <label for="How have your symptoms progressed over the last 48 hrs?">How have your symptoms progressed over the last 48 hrs?</label>
+      </div>
+      <div class="col-50">
+       <input type="radio" name="How have your symptoms progressed over the last 48 hrs?" value="1" /> Same , No Change<br>
+        <input type="radio" name="How have your symptoms progressed over the last 48 hrs?" value="0" /> Improved<br>
+        <input type="radio" name="How have your symptoms progressed over the last 48 hrs?" value="2" /> Worsend<br>
+        
+      </div>
+    </div>
+	<br>
+	<br>
+	<br>
+    <div class="row">
+       <button type="submit" class="btn btn-primary btn-block btn-large" >Predict</button>
+    </div>
+  </form>
+  <br>
+  <br>
+  
+</div>
+</div>
+		       
+          
+        <!-- main-footer end -->
+        <footer class="main-footer">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-3.png);"></div>
+            <div class="anim-icon">
+                 <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				
+            </div>
+            <div class="footer-top">
+                <div class="auto-container">
+                    <div class="widget-section">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="logo-widget footer-widget">
+                                    <figure class="footer-logo"><a href="index.html"><img src="{{ url_for('static', filename='image/footer-logo.png') }}" alt=""></a></figure>
+                                    <div class="text">
+                                        <p>The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads.</p>
+                                        <p>Protect yourself and others from infec- tion by washing your hands or using an</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget service footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">About Us</a></li>
+                                            <li><a href="index.html">Symptoms</a></li>
+                                            <li><a href="index.html">Prevention</a></li>
+                                            <li><a href="index.html">Our Doctors</a></li>
+                                            <li><a href="index.html">Our Blog</a></li>
+                                            <li><a href="index.html">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget region footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Regions</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">Madurai</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="contact-widget footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Contacts</h3>
+                                    </div>
+                                    <ul class="info-list clearfix">
+                                      
+                                        <li><span class="glyphicon glyphicon-earphone"></span><a href="tel:23055873407"> Toll free No. 1077, 0452-2546160,<br> 9597176061     </a></li>
+                                        <li> <span class="glyphicon glyphicon-envelope"></span><a> madurai@gmail.com</a></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="bottom-inner clearfix">
+                        <div class="copyright pull-left">
+                            <p><a href="index.html">Covid-19</a> &copy; 2020 All Right Reserved</p>
+                        </div>
+                        <ul class="footer-nav pull-right">
+                            <li><a href="index.html">Terms of Service</a></li>
+                            <li><a href="index.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+      
+
+<!-- jequery plugins -->
+<script src="{{ url_for('static', filename='js/jquery1.js') }}"></script>
+
+
+</body><!-- End of .page_wrapper -->
+</html>

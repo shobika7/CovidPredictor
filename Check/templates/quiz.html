@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>Covid-19 - MADURAI</title>
+
+<!-- Fav Icon -->
+<!--http://azim.commonsupport.com/Covid-19/index.html-->
+<link rel="icon" href="{{ url_for('static',filename='image/image.ico')}}">
+<style type="text/css" media="all">
+        /*css reset */
+        html,body,div,span,h1,h2,h3,h4,h5,h6,p,code,small,strike,strong,sub,sup,b,u,i{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0; float: center;} 
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} 
+        body{line-height:1; font:normal 0.9em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;} 
+        ol,ul{list-style:none;}
+        strong{font-weight:700;}
+        #frame{max-width:700px; width:auto ; border:1px solid #ccc; background:#fff; padding:10px; margin:3px;}
+        h1{font:normal bold 2em/1.8em "Helvetica Neue", Helvetica, Arial, sans-serif;text-align:left;border-bottom:1px solid #999;padding:0;width:auto}
+        h2{font: bold 1.3em/1.2em "Helvetica Neue", Helvetica, Arial, sans-serif;padding:0;text-align:center;margin:20px 0;}
+        p.pager{margin:5px 0 5px; font:bold 1em/1em "Helvetica Neue", Helvetica, Arial, sans-serif;color:#999;}
+        img.question-image{display:block;max-width:250px;margin:10px auto;border:1px solid #ccc;width:100%;height:auto;}
+        #choice-block{display:block;list-style:none;margin:0;padding:0;}
+        #submitbutton{background: #ff4f5b;}
+        #submitbutton:hover{background: #fa1d00;}
+        #explanation{margin:0 auto;padding:20px;width:75%;}
+        .choice-box{display:block;text-align:center;margin:8px auto;padding:10px 0;border:1px solid #666;cursor:pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; font-weight: bold; width: 50%;}
+    </style>
+
+<!-- Google Fonts -->
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/color1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome-all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/sss.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/map.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    var quiztitle = "COVID-19 QUIZ";
+    var quiz = [
+        {
+            "question"      :   "Q1: Coronavirus can’t be transmitted in areas with hot and humid climates.",
+            "image"         :   "",
+            "choices"       :   [
+                                    "True",
+                                    "False",
+                                    "May be",
+                                    "None of these"
+                                ],
+            "correct"       :   "True",
+            "explanation"   :   "The World Health Organization (WHO) suggests that based on current evidence, the COVID-19 virus can be transmitted in all areas, including those with hot and humid weather.",
+        },
+        {
+            "question"      :   "Q2: Taking a hot bath is effective in preventing coronavirus?",
+              "image"         :   "",
+            "choices"       :   [
+                                    "True",
+                                    "False",
+                                    "May be",
+                                    "Not Necessary"
+                                ],
+            "correct"       :   "True",
+            "explanation"   :   "According to the WHO, taking a hot bath will not prevent you from catching COVID-19. Your normal body temperature remains around 36.5°C to 37°C (97.7-98.6°F), regardless of the temperature of your bath or shower",
+        },
+        {
+            "question"      :   "Q3: Coronavirus cannot spread through mosquito bites.",
+            "image"         :   "",
+            "choices"       :   [
+                                    "True",
+                                    "False",
+                                    "May be",
+                                    "None of these"
+                                ],
+            "correct"       :   "False",
+            "explanation"   :   "Per the WHO, to date there has been no evidence to suggest that the new coronavirus can be transmitted by mosquitoes.",
+        },
+         {
+            "question"      :   "Q4: The genetic material of SARS-CoV2 virus comprises of....",
+            "image"         :   "",
+            "choices"       :   [
+                                    "Chrominome",
+                                    "RNA",
+                                    "DNA",
+                                    "Protosova"
+                                ],
+            "correct"       :   "RNA",
+            "explanation"   :   "When someone becomes infected with the novel coronavirus SARS-CoV-2, the pathogen proliferates rapidly in the cells of the infected person. To do so, the virus has to multiply its genetic material, which consists of a single long RNA strand.",
+        },
+         {
+            "question"      :   "Q5: In which age group the COVID-19 spreads?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "COVID-19 occur in all age groups.",
+                                    "Coronavirus infection is mild in children.",
+                                    "Older person and persons with pre-existing medical conditions are at high risk to develop serious illness.",
+                                    "All the above"
+                                  
+                                ],
+            "correct"       :   "COVID-19 occur in all age groups.",
+            "explanation"   :   "COVID-19 occur in all the age groups. But according to AIMS the infection of coronavirus is mild in children. Persons are at risk who are old and a person suffering from some medical conditions like high blood pressure, cancer, lung disease, diabetes, heart disease. ",
+        },
+         {
+            "question"      :   "Q6: It is safe to receive a package from any area where COVID-19 has been reported.",
+            "image"         :   "",
+            "choices"       :   [
+                                    "True",
+                                    "False"
+                                    
+                                ],
+            "correct"       :   "False",
+            "explanation"   :   "According to the WHO, the likelihood of an infected person contaminating commercial goods is low. The risk of catching the virus that causes COVID-19 from a package that has travelled and been exposed to different conditions and temperatures is also low.",
+        },
+        {
+            "question"      :   "Q7: Which of the following virus causes COVID-19?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "SARS-CoV-2",
+                                    "MERS",
+                                    "Both SARS and MERS",
+                                    "None of the above"
+                                  
+                                ],
+            "correct"       :   "Both SARS and MERS",
+            "explanation"   :   "Coronavirus may cause illness from the common cold to more other serious diseases like Middle East Respiratory Syndrome (MERS-CoV) and Severe Acute Respiratory Syndrome (SARS-CoV).",
+        },
+        {
+            "question"      :   "Q8:  The first case of novel coronavirus was identified in .....",
+            "image"         :   "",
+            "choices"       :   [
+                                    "Beijing",
+                                    "Sanghai",
+                                    "Wuhan, Hubei ",
+                                    "Tianjin"
+                                  
+                                ],
+            "correct"       :   "Wuhan, Hubei ",
+            "explanation"   :   "The first case of novel coronavirus was identified in Wuhan, Hubei Province, China.",
+        },
+        {
+            "question"      :   "Q9: Which of the following precautions are useful in preventing the COVID-19?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "Washing hands with soap and sanitizer",
+                                    "Wearing Masks",
+                                    "Social Distancing",
+                                    "All the three"
+                                  
+                                ],
+            "correct"       :   "All the three",
+            "explanation"   :   "According to WHO, a person can take precautions by covering the nose and mouth while sneezing via tissue or an elbow. Then, immediately throw the tissue into a closed dustbin.",
+        },
+        {
+            "question"      :   "Q10: Which of the following symptoms are not observed in a COVID-19 patient?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "Fever",
+                                    "Sore Throat",
+                                    "Breadthlesness",
+                                    "Boils in the skin"
+                                  
+                                ],
+            "correct"       :   "Boils in the skin",
+            "explanation"   :   "People infected with novel coronavirus or 2019-nCoV reported with mild symptoms namely fever, cough and shortness of breath. Whereas other common symptoms may include runny nose, headache, sore throat, a general feeling of unwell, etc.",
+        },
+
+    ];
+
+
+    /******* No need to edit below this line *********/
+var currentquestion=0,score=0,submt=true,picked;jQuery(document).ready(function(e){function h(i){return e(document.createElement("div")).text(i).html()}function b(k){if(typeof k!=="undefined"&&e.type(k)=="array"){e("#choice-block").empty();for(var j=0;j<k.length;j++){e(document.createElement("li")).addClass("choice choice-box").attr("data-index",j).text(k[j]).appendTo("#choice-block")}}}function d(){submt=true;e("#explanation").empty();e("#question").text(quiz[currentquestion]["question"]);e("#pager").text("Question "+Number(currentquestion+1)+" of "+quiz.length);if(quiz[currentquestion].hasOwnProperty("image")&&quiz[currentquestion]["image"]!=""){if(e("#question-image").length==0){e(document.createElement("img")).addClass("question-image").attr("id","question-image").attr("src",quiz[currentquestion]["image"]).attr("alt",h(quiz[currentquestion]["question"])).insertAfter("#question")}else{e("#question-image").attr("src",quiz[currentquestion]["image"]).attr("alt",h(quiz[currentquestion]["question"]))}}else{e("#question-image").remove()}b(quiz[currentquestion]["choices"]);c()}function f(i){if(quiz[currentquestion]["choices"][i]==quiz[currentquestion]["correct"]){e(".choice").eq(i).css({"background-color":"#50D943"});e("#explanation").html("<strong>Correct!</strong> "+h(quiz[currentquestion]["explanation"]));score++}else{e(".choice").eq(i).css({"background-color":"#D92623"});e("#explanation").html("<strong>Incorrect.</strong> "+h(quiz[currentquestion]["explanation"]))}currentquestion++;e("#submitbutton").html("NEXT QUESTION &raquo;").on("click",function(){if(currentquestion==quiz.length){a()}else{e(this).text("Check Answer").css({color:"#ff4c4c","background-color":"#fceceb"}).off("click");d()}})}function c(){e(".choice").on("mouseover",function(){e(this).css({"background-color":"#fceceb"})});e(".choice").on("mouseout",function(){e(this).css({"background-color":"#fff"})});e(".choice").on("click",function(){picked=e(this).attr("data-index");e(".choice").removeAttr("style").off("mouseout mouseover");e(this).css({"border-color":"#fceceb","font-weight":700,"background-color":"#fceceb"});if(submt){submt=false;e("#submitbutton").css({color:"black"}).on("click",function(){e(".choice").off("click");e(this).off("click");f(picked)})}})}function a(){e("#explanation").empty();e("#question").empty();e("#choice-block").empty();e("#submitbutton").remove();e("#question").text("You got "+score+" out of "+quiz.length+" correct.");e(document.createElement("h2")).css({"text-align":"center","font-size":"4em"}).text(Math.round(score/quiz.length*100)+"%").insertAfter("#question")}function g(){if(typeof quiztitle!=="undefined"&&e.type(quiztitle)==="string"){e(document.createElement("h1")).text(quiztitle).css({"text-align":"center",color:"#ff4f5b"}).appendTo("#frame")}else{e(document.createElement("h1")).text("Quiz").appendTo("#frame")}if(typeof quiz!=="undefined"&&e.type(quiz)==="array"){e(document.createElement("p")).addClass("pager").attr("id","pager").text("Question 1 of "+quiz.length).appendTo("#frame");e(document.createElement("h2")).addClass("question").attr("id","question").text(quiz[0]["question"]).appendTo("#frame");if(quiz[0].hasOwnProperty("image")&&quiz[0]["image"]!=""){e(document.createElement("img")).addClass("question-image").attr("id","question-image").attr("src",quiz[0]["image"]).attr("alt",h(quiz[0]["question"])).appendTo("#frame")}e(document.createElement("p")).addClass("explanation").attr("id","explanation").html("&nbsp;").appendTo("#frame");e(document.createElement("ul")).attr("id","choice-block").appendTo("#frame");b(quiz[0]["choices"]);e(document.createElement("div")).addClass("choice-box").attr("id","submitbutton").text("Check Answer").css({"font-weight":700,color:"black"}).appendTo("#frame");c()}}g()});
+    </script>
+</head>
+
+
+<!-- page wrapper -->
+<body>
+    <div class="boxed_wrapper">
+        <header class="main-header">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="index.html"><img src="{{ url_for('static', filename='image/logo.png') }}" alt=""></a></figure>
+                </div>
+				
+				<div class="menu-area pull-right">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler">
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                    </div>
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation scroll-nav clearfix">
+                                <li></li>
+                                <li ><a href="index.html">Home</a></li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="btn-box">
+                              <h5><b>Language translation</b></h5>
+                            <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                                }
+                                </script>
+
+                               <script type="text/javascript" src="{{ url_for('static', filename='js/lang.js') }}" >     </script>
+                    </div>
+                </div>
+                    </div>
+                
+        </header>
+		</div>
+		       
+            <section class="faq-section  centred">
+				<div class="bubble-icon">
+                <div class="icon icon-1" style="background-image: url(image/icon-1.png);"></div>
+                <div class="icon icon-2" style="background-image: url(image/icon-3.png);"></div>
+                <div class="icon icon-3" style="background-image: url(image/icon-1.png);"></div>
+                <div class="icon icon-4" style="background-image: url(image/icon-2.png);"></div>
+                <div class="icon icon-5" style="background-image: url(image/icon-1.png);"></div>
+				<div class="icon icon-3" style="background-image: url(image/icon-3.png);"></div>
+            </div>
+             <div class="anim-icon">
+               <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				
+            </div>
+           	<div class="sec-title">
+                            <h2>MYTH VS FACTS</h2>
+							<h6 style="color: #ff4f5b">Take quiz on COVID-19</h6>
+							
+					</div>
+					<div class="card " style="width: 80rem;" >
+						<div class="card-body" >
+							<p class="card-text">
+								  <div id="frame" role="content">                       
+                                  </div>              
+            
+							</p>
+						
+						</div>
+					</div>
+				
+			</section>
+		    <!-- main-footer end -->
+        <footer class="main-footer">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-3.png);"></div>
+            <div class="anim-icon">
+				<div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				
+            </div>
+            <div class="footer-top">
+                <div class="auto-container">
+                    <div class="widget-section">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="logo-widget footer-widget">
+                                    <figure class="footer-logo"><a href="index.html"><img src="{{ url_for('static', filename='image/footer-logo.png') }}" alt=""></a></figure>
+                                    <div class="text">
+                                        <p>The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads.</p>
+                                        <p>Protect yourself and others from infec- tion by washing your hands or using an</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget service footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">About Us</a></li>
+                                            <li><a href="index.html">Symptoms</a></li>
+                                            <li><a href="index.html">Prevention</a></li>
+                                            <li><a href="index.html">Our Doctors</a></li>
+                                            <li><a href="index.html">Our Blog</a></li>
+                                            <li><a href="index.html">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget region footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Regions</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">Madurai</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="contact-widget footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Contacts</h3>
+                                    </div>
+                                    <ul class="info-list clearfix">
+                                      
+                                        <li><span class="glyphicon glyphicon-earphone"></span><a href="tel:23055873407"> Toll free No. 1077, 0452-2546160,<br> 9597176061     </a></li>
+                                        <li> <span class="glyphicon glyphicon-envelope"></span><a> madurai@gmail.com</a></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="bottom-inner clearfix">
+                        <div class="copyright pull-left">
+                            <p><a href="index.html">Covid-19</a> &copy; 2020 All Right Reserved</p>
+                        </div>
+                        <ul class="footer-nav pull-right">
+                            <li><a href="index.html">Terms of Service</a></li>
+                            <li><a href="index.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		
+		   <div class="sidebar-right">
+            <a class="sidebar-right-trigger" href="javascript:void(0)">
+                <span> <i class="fa fa-cog fa-spin fa-2x" ></i></span>
+            </a>
+            <div class="sidebar-right-inner">
+                <div class="admin-settings">
+                    <div class="opt-header-color">
+                        <p>Background Color</p>
+                        <div>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_1" class="filled-in chk-col-primary" id="header_color_1" >
+                                <label for="header_color_1"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_2" class="filled-in chk-col-primary"
+                                    id="header_color_2">
+                                <label for="header_color_2"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_3" class="filled-in chk-col-primary"
+                                    id="header_color_3">
+                                <label for="header_color_3"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_4" class="filled-in chk-col-primary"
+                                    id="header_color_4">
+                                <label for="header_color_4"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_5" class="filled-in chk-col-primary"
+                                    id="header_color_5">
+                                <label for="header_color_5"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_6" class="filled-in chk-col-primary"
+                                    id="header_color_6">
+                                <label for="header_color_6"></label>
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <button class="scroll-top scroll-to-target" data-target="html">
+          <span class="glyphicon glyphicon-circle-arrow-up"></span>
+        </button>
+    </div>
+    
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body><!-- End of .page_wrapper -->
+</html>

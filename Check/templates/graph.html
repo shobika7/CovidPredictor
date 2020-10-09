@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>Covid-19 - MADURAI</title>
+<link rel="icon" href="{{ url_for('static',filename='image/image.ico')}}">
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/owl.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/color1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome-all.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/sss.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/map.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 50%;
+  height: 20%;
+  padding: 10px 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 300px) {
+  .column {
+    width: 50%;
+    display: block;
+    margin-bottom: 80px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  height: 94%;
+ 
+
+}
+</style>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+var dataPoints = [];
+var i ;
+var chart = new CanvasJS.Chart("chartContainer",{
+	animationEnabled: true,
+	title:{
+		text:"ACTIVE CASE"
+	},
+	data: [{
+		type: "area",
+		dataPoints : dataPoints,
+	}]
+});
+$.getJSON("https://api.covid19india.org/districts_daily.json", function(data) {  
+	$.each(data, function(key,value){
+		var m = value["Tamil Nadu"]["Madurai"];
+		for (var i = 0; i < m.length; i++) {
+		dataPoints.push({
+			x: new Date(m[i].date),
+			y: m[i].active
+		});
+	}
+		
+	chart.render();
+});
+});
+var dataPoints1 = [];
+var chart2 = new CanvasJS.Chart("chartContainer1",{
+	title:{
+		text:"CONFIRMED CASE"
+	},
+	data: [{
+		type: "splineArea",
+		color: "rgba(54,158,173,.7)",
+		markerSize: 5,
+		dataPoints : dataPoints1,
+	}]
+});
+$.getJSON("https://api.covid19india.org/districts_daily.json", function(data) {  
+	$.each(data, function(key,value){
+		var m = value["Tamil Nadu"]["Madurai"];
+		for (var i = 0; i < m.length; i++) {
+		dataPoints1.push({
+			x: new Date(m[i].date),
+			y: m[i].confirmed
+		});
+	}
+		
+	chart2.render();
+});
+});
+var dataPoints2 = [];
+var chart3 = new CanvasJS.Chart("chartContainer2",{
+	title:{
+		text:"RECOVERED CASE"
+	},
+	data: [{
+		type: "area",
+		color: "rgba(0,75,141,0.7)",
+		dataPoints : dataPoints2,
+	}]
+});
+$.getJSON("https://api.covid19india.org/districts_daily.json", function(data) {  
+	$.each(data, function(key,value){
+		var m = value["Tamil Nadu"]["Madurai"];
+		for (var i = 0; i < m.length; i++) {
+		dataPoints2.push({
+			x: new Date(m[i].date),
+			y: m[i].recovered
+		});
+	}
+		
+	chart3.render();
+});
+});
+var dataPoints3 = [];
+var chart4 = new CanvasJS.Chart("chartContainer3",{
+	title:{
+		text:"DECREASED CASE"
+	},
+	data: [{
+		type: "line",
+		dataPoints : dataPoints3,
+	}]
+});
+$.getJSON("https://api.covid19india.org/districts_daily.json", function(data) {  
+	$.each(data, function(key,value){
+		var m = value["Tamil Nadu"]["Madurai"];
+		for (var i = 0; i < m.length; i++) {
+		dataPoints3.push({
+			x: new Date(m[i].date),
+			y: m[i].deceased
+		});
+	}
+		
+	chart4.render();
+});
+});
+
+var dataPoints4=[];
+var dataPoints5=[];
+var dataPoints6=[];
+var chart5 = new CanvasJS.Chart("chartContainer4", {
+  animationEnabled: true,
+  title:{
+    text: "Comparison On Active , Recovered and Deceased Cases"
+  },
+  axisY: {
+    title: "count",
+    includeZero: true
+  },
+  legend:{
+    cursor: "pointer",
+    fontSize: 16,
+    //itemclick: toggleDataSeries
+  },
+  toolTip:{
+    shared: true
+  },
+  data: [{
+    name: "active",
+    type: "spline",
+    yValueFormatString: "#0.##",
+    showInLegend: true,
+    dataPoints : dataPoints4
+    
+  },
+  {
+    name: "recovered",
+    type: "spline",
+    yValueFormatString: "#0.## ",
+    showInLegend: true,
+    dataPoints : dataPoints5
+    
+  },
+  {
+    name: "decreased",
+    type: "spline",
+    yValueFormatString: "#0.## ",
+    showInLegend: true,
+    dataPoints : dataPoints6
+    
+  }]    
+});
+function addData(data){
+  $.each(data, function(key,value){
+    console.log(data);
+    var m = value["Tamil Nadu"]["Madurai"];
+    for (var i = 0; i < m.length; i++) {
+    dataPoints4.push({
+      x: new Date(m[i].date),
+      y: m[i].active
+    });
+  }
+  for (var i = 0; i < m.length; i++) {
+    dataPoints5.push({
+      x: new Date(m[i].date),
+      y: m[i].recovered
+    });
+  }
+  for (var i = 0; i < m.length; i++) {
+    dataPoints6.push({
+      x: new Date(m[i].date),
+      y: m[i].deceased
+    });
+  }
+    
+  chart5.render();
+});
+}
+$.getJSON("https://api.covid19india.org/districts_daily.json", addData);
+
+}
+
+
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<!-- page wrapper -->
+<body>
+
+    <div class="boxed_wrapper">
+        <header class="main-header">
+            <div class="outer-box clearfix">
+                <div class="logo-box pull-left">
+                    <figure class="logo"><a href="index.html"><img src="{{ url_for('static', filename='image/logo.png') }}" alt=""></a></figure>
+                </div>
+				        
+                <div class="menu-area pull-right">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler">
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                        <i class="icon-bar"></i>
+                    </div>
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                            <ul class="navigation scroll-nav clearfix">
+                                <li></li>
+                                <li ><a href="index.html">Home</a></li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="btn-box">
+                              <h5><b>Language transulation</b></h5>
+                            <div id="google_translate_element"></div>
+                                <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                                }
+                                </script>
+
+                                <script type="text/javascript" src="{{ url_for('static', filename='js/lang.js') }}" >     </script>
+                    </div>
+                </div>
+				
+            </div>
+		    </div>
+
+            <!--sticky Header-->
+        </header>
+		 <section class="about-section centred" id="about">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+            <div class="anim-icon">
+               <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+				<div class="card " style="width: 150rem; bottom: 50px;" >
+						<div class="card-body" >
+							<div class="card-title"><h2><b>MADURAI COVID CASES FOR THE PAST ONE MONTH</b></h2></div>
+						    <div class="column">
+                    <div class="card bg-success text-white" >
+                  
+                      <div id="chartContainer" style="height: 300px; width: 95%; margin-left: 15px;"></div>
+                      
+                    </div>
+                  </div>
+
+                  <div class="column">
+                    
+                	 <div class="card bg-warning text-white">
+                        <div id="chartContainer1" style="height: 300px; width: 95%;  margin-left: 15px;"></div>
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="column">
+                    <div class="card bg-primary text-white">
+                    
+                      <div id="chartContainer2" style="height: 300px; width: 95%;  margin-left: 15px;"></div>
+                    
+                    </div>
+                  </div>
+                  
+                  <div class="column">
+                    <div class="card bg-danger text-white">
+                     
+                      <div id="chartContainer3" style="height: 300px; width: 95%;  margin-left: 15px;"></div>
+                     
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+        <div class="card " style="width: 100%;" >
+            <div class="card-body" >
+            <div class="card-title"><h2><b>COMPARISON ON ACTIVE RECOVERED AND DEATH CHANGE IN MADURAI</b></h2></div>
+                  <div class="column">
+                    <div class="card bg-success text-white" style="width: 200%;">
+                     
+                    <div id="chartContainer4" style="height: 300px; width: 96%;  margin-left: 15px;"></div>
+                     
+                    </div>
+                  </div>
+              </div>  
+          </div>
+                  </div>
+					</div>
+                
+                
+           
+        </section>
+	
+		       
+          
+        <!-- main-footer end -->
+        <footer class="main-footer">
+            <div class="shape-layer" style="background-image: url(assets/images/shape/shape-3.png);"></div>
+            <div class="anim-icon">
+                <div class="icon icon-1 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-1.png') }});"></div>
+                <div class="icon icon-2 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-2.png') }});"></div>
+				<div class="icon icon-3 rotate-me" style="background-image: url({{ url_for('static', filename='image/icon-3.png') }});"></div>
+				
+            </div>
+            <div class="footer-top">
+                <div class="auto-container">
+                    <div class="widget-section">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="logo-widget footer-widget">
+                                    <figure class="footer-logo"><a href="index.html"><img src="{{ url_for('static', filename='image/footer-logo.png') }}" alt=""></a></figure>
+                                    <div class="text">
+                                        <p>The best way to prevent and slow down transmission is be well informed about the COVID-19 virus, the disease it causes and how it spreads.</p>
+                                        <p>Protect yourself and others from infec- tion by washing your hands or using an</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget service footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Services</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index.html">About Us</a></li>
+                                            <li><a href="index.html">Symptoms</a></li>
+                                            <li><a href="index.html">Prevention</a></li>
+                                            <li><a href="index.html">Our Doctors</a></li>
+                                            <li><a href="index.html">Our Blog</a></li>
+                                            <li><a href="index.html">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="links-widget region footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Regions</h3>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="list clearfix">
+                                            <li><a href="index2.html">Madurai</a></li>
+                                            <li><a href="index2.html">Tamil Nadu</a></li>
+                                            <li><a href="index2.html">India</a></li>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                                <div class="contact-widget footer-widget">
+                                    <div class="widget-title">
+                                        <h3>Contacts</h3>
+                                    </div>
+                                    <ul class="info-list clearfix">
+                                      
+                                        <li><span class="glyphicon glyphicon-earphone"></span><a href="tel:23055873407"> Toll free No. 1077, 0452-2546160,<br> 9597176061     </a></li>
+                                        <li> <span class="glyphicon glyphicon-envelope"></span><a> madurai@gmail.com</a></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="auto-container">
+                    <div class="bottom-inner clearfix">
+                        <div class="copyright pull-left">
+                            <p><a href="index.html">Covid-19</a> &copy; 2020 All Right Reserved</p>
+                        </div>
+                        <ul class="footer-nav pull-right">
+                            <li><a href="index.html">Terms of Service</a></li>
+                            <li><a href="index.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+      <div class="sidebar-right">
+            <a class="sidebar-right-trigger" href="javascript:void(0)">
+                <span> <i class="fa fa-cog fa-spin fa-2x" ></i></span>
+            </a>
+            <div class="sidebar-right-inner">
+                <div class="admin-settings">
+                    <div class="opt-header-color">
+                        <p>Background Color</p>
+                        <div>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_1" class="filled-in chk-col-primary" id="header_color_1" >
+                                <label for="header_color_1"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_2" class="filled-in chk-col-primary"
+                                    id="header_color_2">
+                                <label for="header_color_2"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_3" class="filled-in chk-col-primary"
+                                    id="header_color_3">
+                                <label for="header_color_3"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_4" class="filled-in chk-col-primary"
+                                    id="header_color_4">
+                                <label for="header_color_4"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_5" class="filled-in chk-col-primary"
+                                    id="header_color_5">
+                                <label for="header_color_5"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_6" class="filled-in chk-col-primary"
+                                    id="header_color_6">
+                                <label for="header_color_6"></label>
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        
+
+<!-- jequery plugins -->
+<
+<script src="{{ url_for('static', filename='js/jquery1.js') }}"></script>
+
+
+</body><!-- End of .page_wrapper -->
+</html>
